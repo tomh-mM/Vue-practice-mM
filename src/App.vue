@@ -1,18 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="React logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/300px-React-icon.svg.png?20220125121207">
+    <Copy :copy="copyText"/>
+    <Body :bodyTitle="computedTitle" :bodyIntro="computedIntro"/>
+    <button v-on:click="toggleTitle">Change Title</button>
+    <button v-on:click="toggleIntroText">Change Intro Text</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Copy from './components/Copy.vue'
+import Body from './components/Body.vue'
+import { titleState, toggleTitle, getComputedTitle } from './state/toggleTitle';
+import { introState, toggleIntroText, getComputedIntro } from './state/toggleIntroText';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Copy,
+    Body
+  },
+  data() {
+    return {
+      copyText: "Want to learn React instead?",
+      bodyTitle: "Get started!",
+      bodyIntro: "Here are some great resources you should check out!",
+      titleState,
+      introState
+    }
+  },
+  methods: {
+    toggleTitle() {
+      toggleTitle();
+    },
+    toggleIntroText() {
+      toggleIntroText();
+    }
+  },
+  computed: {
+    computedTitle() {
+      return getComputedTitle(this.bodyTitle);
+    },
+    computedIntro() {
+      return getComputedIntro(this.bodyIntro);
+    }
+  },
 }
 </script>
 
