@@ -3,8 +3,10 @@
     <img alt="React logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/300px-React-icon.svg.png?20220125121207">
     <Copy :copy="copyText"/>
     <Body :bodyTitle="computedTitle" :bodyIntro="computedIntro"/>
-    <button v-on:click="toggleTitle">Change Title</button>
-    <button v-on:click="toggleIntroText">Change Intro Text</button>
+    <div class="button-container">
+      <button class="button" v-on:click="toggleTitle">Change Title</button>
+      <button class="button" v-on:click="toggleIntroText">Change Intro Text</button>
+    </div>
   </div>
 </template>
 
@@ -49,6 +51,9 @@ export default {
 </script>
 
 <style>
+
+@import './styles/buttonStyles.css';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
